@@ -36,8 +36,9 @@ namespace Transport {
 class TransportMessageHandler
 {
 public:
-    virtual ~TransportMessageHandler() = 0;
-    virtual void HandleMessageReceived(const PacketHeader & packetHeader, const Transport::PeerAddress & peerAddress, System::PacketBufferHandle && msg) = 0;
+    virtual ~TransportMessageHandler()                                    = 0;
+    virtual void HandleMessageReceived(const PacketHeader & packetHeader, const Transport::PeerAddress & peerAddress,
+                                       System::PacketBufferHandle && msg) = 0;
 };
 
 inline TransportMessageHandler::~TransportMessageHandler() {}
@@ -58,10 +59,7 @@ public:
      * @param[in] param   The argument to pass in to the handler function
      *
      */
-    void SetOwner(TransportMessageHandler * owner)
-    {
-        mOwner = owner;
-    }
+    void SetOwner(TransportMessageHandler * owner) { mOwner = owner; }
 
     /**
      * @brief Send a message to the specified target.
